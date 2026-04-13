@@ -292,10 +292,11 @@ function renderDirectionIcon(direction) {
         return '<img class="dir-icon-img" src="icons/diag.png" alt="north-east arrow" title="Diagonal match">';
     }
     if (direction === "east") {
-        return '<img class="dir-icon-img" src="icons/left.png" alt="east arrow" title="Horizontal move">';
+        return '<img class="dir-icon-img" src="icons/up.png" alt="north arrow" title="Vertical move">';
     }
     if (direction === "north") {
-        return '<img class="dir-icon-img" src="icons/up.png" alt="north arrow" title="Vertical move">';
+        return '<img class="dir-icon-img" src="icons/left.png" alt="east arrow" title="Horizontal move">'
+        ;
     }
     return '<span class="dir-icon dir-empty">•</span>';
 }
