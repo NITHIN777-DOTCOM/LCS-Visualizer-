@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="source.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>Longest Common Subsequence Algorithm Visualizer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+    
+    <header>
+        <h1>Longest Common Subsequence Algorithm Visualization</h1>
+    </header>
+    <div class="container inputs">
+        <button id="pause-btn" class="btn" onclick="togglePause()" disabled>Pause</button>
+        <div id="text_inputs">
+            <input id="text1" type="text" placeholder="First text" maxlength="7">
+            <input id="text2" type="text" placeholder="Second text" maxlength="7">
+        </div>
+        <div id="buttons">
+            <button class="btn btn-light btn-sm cbtn" id="viso" onclick="LCS()">Visualize</button>
+        </div>
+    </div>
+    <p id="desc"></p>
+    <br>
+    <div id="result"><p id="thelcs">The LCS is: </p><div id="letters"></div></div>
+    <br><div id="internal_parts">
+        <div id="tables">
+            <div class="table-wrap">
+                <h5>Memoization Table (Values)</h5>
+                <div id="grid"></div>
+            </div>
+            <div class="table-wrap">
+                <h5>Direction Table (Arrows)</h5>
+                <div id="arrow-grid"></div>
+            </div>
+        </div>
+        <div class="code">
+            <ul>
+                <li>
+                    <h4>Dynamic Programming</h4>
+                </li>
+                <li>for (var i = 1; i <= text2.length; i++)</li>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;for (var j = 1; j <= text1.length; j++)</li>
+
+                <li id="line-if">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (A[i] == B[j])</li>
+                <li id="line-if-lcs">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LCS[i,j] = 1 + LCS[i-1,j-1]</li>
+                <li id="line-if-dir">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B[i,j] = north east arrow</li>
+                <li id="line-else">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else</li>
+                <li id="line-else-lcs">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LCS[i,j] = max(LCS[i-1,j], LCS[i,j-1])</li>
+                <li id="line-gt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (LCS[i-1,j] &gt; LCS[i,j-1])</li>
+                <li id="line-gt-dir">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B[i,j] = east arrow</li>
+                <li id="line-lt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (LCS[i-1,j] &lt; LCS[i,j-1])</li>
+                <li id="line-lt-dir">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B[i,j] = north arrow</li>
+            </ul>
+        </div>
+    </div>
+    
+</body>
+
+
+</html>
